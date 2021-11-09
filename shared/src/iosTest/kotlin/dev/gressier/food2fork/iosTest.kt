@@ -5,8 +5,7 @@ import kotlin.test.assertTrue
 
 class IosGreetingTest {
 
-    @Test
-    fun testExample() {
-        assertTrue(Greeting().greeting().contains("iOS"), "Check iOS is mentioned")
+    @Test fun Check_that_iOS_is_mentioned() {
+        assertTrue(Greeting().greeting().contains("iOS"))
     }
 }

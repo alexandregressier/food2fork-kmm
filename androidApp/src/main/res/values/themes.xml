@@ -1,0 +1,3 @@
+<resources>
+    <style name="Theme.Food2Fork" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

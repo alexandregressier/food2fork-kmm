@@ -1,28 +1,36 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+val versionFood2Fork: String by rootProject.extra
+val versionJdk: JavaVersion by rootProject.extra
+val versionAndroidSdk: Int by rootProject.extra
+val versionAndroidSdkMin: Int by rootProject.extra
+val versioniOSMin: String by rootProject.extra
+
 plugins {
     kotlin("multiplatform")
-    kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("native.cocoapods")
 }
 
-version = "1.0"
+version = versionFood2Fork
 
 kotlin {
     android()
     iosX64()
     iosArm64()
-    //iosSimulatorArm64() sure all ios dependencies support this target
 
     cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
+        summary = "Food2Fork"
+        homepage = "https://github.com/alexandregressier/food2fork-kmm"
+        ios.deploymentTarget = versioniOSMin
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
         }
     }
-    
+
     sourceSets {
+        // Common
         val commonMain by getting
         val commonTest by getting {
             dependencies {
@@ -30,6 +38,8 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
+
+        // Android
         val androidMain by getting
         val androidTest by getting {
             dependencies {
@@ -37,32 +47,37 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
+
+        // iOS
         val iosX64Main by getting
         val iosArm64Main by getting
-        //val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
-            //iosSimulatorArm64Main.dependsOn(this)
         }
         val iosX64Test by getting
         val iosArm64Test by getting
-        //val iosSimulatorArm64Test by getting
         val iosTest by creating {
             dependsOn(commonTest)
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
-            //iosSimulatorArm64Test.dependsOn(this)
         }
     }
 }
 
 android {
-    compileSdk = 31
+    compileSdk = versionAndroidSdk
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
-        minSdk = 26
-        targetSdk = 31
+        minSdk = versionAndroidSdkMin
+        targetSdk = versionAndroidSdk
+    }
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "$versionJdk"
     }
 }

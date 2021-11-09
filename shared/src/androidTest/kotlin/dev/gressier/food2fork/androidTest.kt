@@ -5,8 +5,7 @@ import org.junit.Test
 
 class AndroidGreetingTest {
 
-    @Test
-    fun testExample() {
-        assertTrue("Check Android is mentioned", Greeting().greeting().contains("Android"))
+    @Test fun Check_that_Android_is_mentioned() {
+        assertTrue(Greeting().greeting().contains("Android"))
     }
 }

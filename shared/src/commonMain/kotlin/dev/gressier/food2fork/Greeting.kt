@@ -1,7 +1,6 @@
 package dev.gressier.food2fork
 
 class Greeting {
-    fun greeting(): String {
-        return "Hello, ${Platform().platform}!"
-    }
+    fun greeting(): String =
+        "Hello, ${Platform().platform}!"
 }
