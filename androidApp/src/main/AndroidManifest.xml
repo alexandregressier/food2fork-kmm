@@ -8,6 +8,7 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.Food2Fork"
+        android:name=".BaseApplication"
         android:supportsRtl="true"
 
         android:allowBackup="true"

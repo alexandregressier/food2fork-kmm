@@ -9,6 +9,8 @@ val versionAndroidSdkMin: Int by rootProject.extra
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin") version "2.40"
 }
 
 android {
@@ -67,6 +69,15 @@ dependencies {
     // Activity
     implementation(AndroidX.activity.compose)
 
+    // Hilt
+    implementation(Google.dagger.hilt.android)
+    kapt(Google.dagger.hilt.compiler)
+
     // Navigation
     implementation(AndroidX.navigation.compose)
+    implementation(AndroidX.hilt.navigationCompose)
+}
+
+kapt {
+    correctErrorTypes = true
 }

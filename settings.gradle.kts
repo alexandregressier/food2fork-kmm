@@ -4,6 +4,16 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
     }
+    resolutionStrategy {
+        eachPlugin {
+            with (requested) {
+                when (id.id) {
+                    "dagger.hilt.android.plugin" ->
+                        useModule("com.google.dagger:hilt-android-gradle-plugin:$version")
+                }
+            }
+        }
+    }
 }
 
 plugins {
