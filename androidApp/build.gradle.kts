@@ -65,6 +65,7 @@ dependencies {
 
     // Lifecycle
     implementation(AndroidX.lifecycle.runtimeKtx)
+    implementation(AndroidX.lifecycle.viewModelCompose)
 
     // Activity
     implementation(AndroidX.activity.compose)
