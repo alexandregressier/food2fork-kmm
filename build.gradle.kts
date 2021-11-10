@@ -7,8 +7,8 @@ val versionAndroidSdkMin by extra(26)
 val versioniOSMin by extra("14.1")
 
 plugins {
-    kotlin("jvm") version "1.5.31" apply false
-    id("com.android.application") version "7.2.0-alpha03" apply false
+    kotlin("jvm") apply false
+    id("com.android.application") apply false
 }
 
 tasks.wrapper {

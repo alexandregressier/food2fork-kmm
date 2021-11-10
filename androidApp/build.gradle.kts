@@ -1,3 +1,5 @@
+import de.fayard.refreshVersions.core.versionFor
+
 val versionFood2Fork: String by rootProject.extra
 val versionCodeFood2Fork: Int by rootProject.extra
 val versionJdk: JavaVersion by rootProject.extra
@@ -36,7 +38,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.0-beta02"
+        kotlinCompilerExtensionVersion = versionFor(AndroidX.compose.ui)
     }
     packagingOptions {
         resources {
@@ -50,21 +52,21 @@ dependencies {
     implementation(project(":shared"))
 
     // Core
-    implementation("androidx.core:core-ktx:1.7.0")
+    implementation(AndroidX.core.ktx)
 
     // Compose
-    implementation("androidx.compose.ui:ui:1.1.0-beta02")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.1.0-beta02")
+    implementation(AndroidX.compose.ui)
+    implementation(AndroidX.compose.ui.toolingPreview)
 
     // Material
-    implementation("androidx.compose.material3:material3:1.0.0-alpha01")
+    implementation("androidx.compose.material3:material3:_")
 
     // Lifecycle
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.0")
+    implementation(AndroidX.lifecycle.runtimeKtx)
 
     // Activity
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation(AndroidX.activity.compose)
 
     // Navigation
-    implementation("androidx.navigation:navigation-compose:2.4.0-beta02")
+    implementation(AndroidX.navigation.compose)
 }
