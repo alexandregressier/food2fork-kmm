@@ -1,3 +1,7 @@
 <resources>
     <string name="appName">Food2Fork</string>
+
+    <!-- Screen Labels -->
+    <string name="screenLabel_recipeList">Recipe List</string>
+    <string name="screenLabel_recipeDetails">Recipe Details</string>
 </resources>
