@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dev.gressier.food2fork.android">
 
+    <!-- Network -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="@string/appName"
         android:icon="@mipmap/ic_launcher"

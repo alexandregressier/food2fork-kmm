@@ -10,6 +10,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("native.cocoapods")
+    kotlin("plugin.serialization")
 }
 
 version = versionFood2Fork
@@ -31,7 +32,16 @@ kotlin {
 
     sourceSets {
         // Common
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                // KotlinX
+                implementation(KotlinX.datetime)
+
+                // Ktor Client
+                implementation("io.ktor:ktor-client-core:_")
+                implementation("io.ktor:ktor-client-serialization:_")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
@@ -40,7 +50,12 @@ kotlin {
         }
 
         // Android
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                // Ktor Client
+                implementation("io.ktor:ktor-client-android:_")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
@@ -55,6 +70,10 @@ kotlin {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
+            dependencies {
+                // Ktor Client
+                implementation("io.ktor:ktor-client-ios:_")
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
