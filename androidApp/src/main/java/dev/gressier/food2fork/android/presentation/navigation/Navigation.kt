@@ -1,14 +1,13 @@
 package dev.gressier.food2fork.android.presentation.navigation
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import dev.gressier.food2fork.android.R
+import androidx.navigation.navArgument
+import dev.gressier.food2fork.android.presentation.recipedetails.RecipeDetailsScreen
+import dev.gressier.food2fork.android.presentation.recipelist.RecipeListScreen
 
 @Composable
 fun Navigation() {
@@ -16,17 +15,17 @@ fun Navigation() {
 
     NavHost(navController, startDestination = Screen.RecipeList.route) {
         composable(Screen.RecipeList.route) {
-            Column {
-                Text(stringResource(R.string.screenLabel_recipeList))
-                Button({ navController.navigate(Screen.RecipeDetails.route) }) {
-                    Text("Go to ${stringResource(R.string.screenLabel_recipeDetails)}")
-                }
-            }
+            RecipeListScreen(
+                onRecipeSelect = { recipeId ->
+                    navController.navigate("${Screen.RecipeDetails.route}/$recipeId")
+                },
+            )
         }
-        composable(Screen.RecipeDetails.route) {
-            Column {
-                Text(stringResource(R.string.screenLabel_recipeDetails))
-            }
+        composable(
+            route = "${Screen.RecipeDetails.route}/{recipeId}",
+            arguments = listOf(navArgument("recipeId") { type = NavType.IntType })
+        ) { navBackStackEntry ->
+            RecipeDetailsScreen(recipeId = navBackStackEntry.arguments?.getInt("recipeId"))
         }
     }
 }
