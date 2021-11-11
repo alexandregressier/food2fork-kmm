@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 typealias RecipeId = Int
 
 @Composable
-fun RecipeListScreen(
+fun RecipeListView(
     onRecipeSelect: (RecipeId) -> Unit = {},
 ) {
     LazyColumn {

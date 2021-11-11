@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import dev.gressier.food2fork.domain.model.Recipe
 
 @Composable
-fun RecipeDetailsScreen(
+fun RecipeDetailsView(
     recipe: Recipe?,
 ) {
     recipe?.apply {

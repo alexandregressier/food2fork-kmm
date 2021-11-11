@@ -7,9 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import dev.gressier.food2fork.android.presentation.recipedetails.RecipeDetailsScreen
+import dev.gressier.food2fork.android.presentation.recipedetails.RecipeDetailsView
 import dev.gressier.food2fork.android.presentation.recipedetails.RecipeDetailsViewModel
-import dev.gressier.food2fork.android.presentation.recipelist.RecipeListScreen
+import dev.gressier.food2fork.android.presentation.recipelist.RecipeListView
 import dev.gressier.food2fork.android.presentation.recipelist.RecipeListViewModel
 
 @Composable
@@ -19,7 +19,7 @@ fun Navigation() {
     NavHost(navController, startDestination = Screen.RecipeList.route) {
         composable(Screen.RecipeList.route) {
             val viewModel = hiltViewModel<RecipeListViewModel>()
-            RecipeListScreen(
+            RecipeListView(
                 onRecipeSelect = { recipeId -> navController.navigate("${Screen.RecipeDetails.route}/$recipeId") },
             )
         }
@@ -28,7 +28,9 @@ fun Navigation() {
             arguments = listOf(navArgument("recipeId") { type = NavType.IntType })
         ) {
             val viewModel = hiltViewModel<RecipeDetailsViewModel>()
-            RecipeDetailsScreen(recipe = viewModel.recipe.value)
+            RecipeDetailsView(
+                recipe = viewModel.recipe.value,
+            )
         }
     }
 }
