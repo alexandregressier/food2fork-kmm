@@ -1,15 +1,16 @@
 package dev.gressier.food2fork.android.presentation.recipedetails
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import dev.gressier.food2fork.android.presentation.recipelist.RecipeId
+import dev.gressier.food2fork.domain.model.Recipe
 
 @Composable
 fun RecipeDetailsScreen(
-    recipeId: RecipeId?,
+    recipe: Recipe?,
 ) {
-    recipeId?.let {
-        Text("Recipe Details for ID = $recipeId")
+    recipe?.apply {
+        Text(title, style = MaterialTheme.typography.headlineMedium)
     }
-        ?: Text("ERROR")
+        ?: Text("Loading...")
 }

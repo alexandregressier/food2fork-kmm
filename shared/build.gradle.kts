@@ -54,7 +54,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 // Ktor Client
-                implementation("io.ktor:ktor-client-android:_")
+                api("io.ktor:ktor-client-android:_")
             }
         }
         val androidTest by getting {

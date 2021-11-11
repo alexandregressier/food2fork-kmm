@@ -28,7 +28,7 @@ fun Navigation() {
             arguments = listOf(navArgument("recipeId") { type = NavType.IntType })
         ) {
             val viewModel = hiltViewModel<RecipeDetailsViewModel>()
-            RecipeDetailsScreen(recipeId = viewModel.recipeId.value)
+            RecipeDetailsScreen(recipe = viewModel.recipe.value)
         }
     }
 }
