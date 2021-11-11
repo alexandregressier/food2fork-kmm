@@ -6,11 +6,11 @@ import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.domain.util.DateTimeUtil
 
 class RecipeCacheImpl(
-    private val recipeDatabase: RecipeDatabase,
+    recipeDatabase: RecipeDatabase,
 ) : RecipeCache {
 
-    private val recipeQueries: RecipeDatabaseQueries =
-        recipeDatabase.recipeDatabaseQueries
+    private val recipeQueries: RecipeQueries =
+        recipeDatabase.recipeQueries
 
     override fun insert(recipe: Recipe) {
         recipe.apply {
