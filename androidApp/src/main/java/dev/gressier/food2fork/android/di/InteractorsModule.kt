@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.gressier.food2fork.datasource.network.RecipeService
+import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
 import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
 import javax.inject.Singleton
 
@@ -16,4 +17,9 @@ object InteractorsModule {
     @Provides
     fun provideSearchRecipes(recipeService: RecipeService): SearchRecipes =
         SearchRecipes(recipeService)
+
+    @Singleton
+    @Provides
+    fun provideGetRecipe(recipeService: RecipeService): GetRecipe =
+        GetRecipe(recipeService)
 }
