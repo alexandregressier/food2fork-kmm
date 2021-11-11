@@ -39,8 +39,8 @@ kotlin {
                 implementation(KotlinX.serialization.core)
 
                 // Ktor Client
-                implementation("io.ktor:ktor-client-core:_")
-                implementation("io.ktor:ktor-client-serialization:_")
+                implementation(Ktor.client.core)
+                implementation(Ktor.client.serialization)
             }
         }
         val commonTest by getting {
@@ -54,7 +54,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 // Ktor Client
-                api("io.ktor:ktor-client-android:_")
+                api(Ktor.client.okHttp)
             }
         }
         val androidTest by getting {
@@ -73,7 +73,7 @@ kotlin {
             iosArm64Main.dependsOn(this)
             dependencies {
                 // Ktor Client
-                implementation("io.ktor:ktor-client-ios:_")
+                implementation(Ktor.client.darwin)
             }
         }
         val iosX64Test by getting
