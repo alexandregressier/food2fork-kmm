@@ -13,9 +13,9 @@ class RecipeServiceImpl(
     private val baseUrl: String = BASE_URL,
 ) : RecipeService {
 
-    override suspend fun search(page: Int, query: String): List<Recipe> =
+    override suspend fun search(query: String, page: Int): List<Recipe> =
         httpClient.get<RecipeSearchResponse> {
-            url("$baseUrl/search?page=$page&query=$query")
+            url("$baseUrl/search?query=$query&page=$page")
             header(HttpHeaders.Authorization, TOKEN)
         }
             .results

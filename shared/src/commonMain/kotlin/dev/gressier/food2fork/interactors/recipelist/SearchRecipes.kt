@@ -9,11 +9,11 @@ import kotlinx.coroutines.flow.flow
 class SearchRecipes(
     private val recipeService: RecipeService,
 ) {
-    fun execute(page: Int, query: String): Flow<RequestState<List<Recipe>>> =
+    fun execute(query: String, page: Int): Flow<RequestState<List<Recipe>>> =
         flow {
             emit(RequestState.Loading)
             try {
-                val recipes = recipeService.search(page, query)
+                val recipes = recipeService.search(query, page)
                 emit(RequestState.Success(recipes))
             } catch (e: Exception) {
                 emit(RequestState.Error(e))

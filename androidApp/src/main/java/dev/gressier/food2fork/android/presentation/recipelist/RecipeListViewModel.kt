@@ -17,7 +17,7 @@ class RecipeListViewModel @Inject constructor(
 
     init {
         // Search Recipes
-        searchRecipes.execute(page = 1, query = "chicken")
+        searchRecipes.execute(query = "chicken", page = 1)
             .onEach {
                 when (it) {
                     RequestState.Loading -> Log.d("RecipeListViewModel", "Loading...")
