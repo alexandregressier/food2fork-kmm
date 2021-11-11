@@ -36,6 +36,7 @@ kotlin {
             dependencies {
                 // KotlinX
                 implementation(KotlinX.datetime)
+                implementation(KotlinX.serialization.core)
 
                 // Ktor Client
                 implementation("io.ktor:ktor-client-core:_")
