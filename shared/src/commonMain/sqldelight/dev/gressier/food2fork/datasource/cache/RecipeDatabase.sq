@@ -1,0 +1,44 @@
+CREATE TABLE recipeEntity (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    publisher TEXT NOT NULL,
+    featuredImageUrl TEXT NOT NULL,
+    rating INTEGER NOT NULL,
+    sourceUrl TEXT NOT NULL,
+    ingredients TEXT NOT NULL,
+    addedAt REAL NOT NULL,
+    updatedAt REAL NOT NULL
+);
+
+selectAll:
+SELECT * FROM recipeEntity;
+
+searchRecipes:
+SELECT * FROM recipeEntity
+WHERE title LIKE ('%' || :query || '%')
+OR ingredients LIKE ('%' || :query || '%')
+LIMIT :pageSize
+OFFSET :offset;
+
+getAllRecipes:
+SELECT * FROM recipeEntity
+LIMIT :pageSize
+OFFSET :offset;
+
+getRecipeById:
+SELECT * FROM recipeEntity
+WHERE id = :id;
+
+insertRecipe:
+INSERT OR REPLACE
+INTO recipeEntity (
+    id,
+    title,
+    publisher,
+    featuredImageUrl,
+    rating,
+    sourceUrl,
+    ingredients,
+    addedAt,
+    updatedAt
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);

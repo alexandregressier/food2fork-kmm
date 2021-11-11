@@ -9,6 +9,7 @@ val versioniOSMin by extra("14.1")
 plugins {
     kotlin("jvm") apply false
     id("com.android.application") apply false
+    id("com.squareup.sqldelight") apply false
 }
 
 buildscript {

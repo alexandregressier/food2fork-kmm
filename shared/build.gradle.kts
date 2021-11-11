@@ -11,6 +11,7 @@ plugins {
     id("com.android.library")
     kotlin("native.cocoapods")
     kotlin("plugin.serialization")
+    id("com.squareup.sqldelight")
 }
 
 version = versionFood2Fork
@@ -55,6 +56,9 @@ kotlin {
             dependencies {
                 // Ktor Client
                 api(Ktor.client.okHttp)
+
+                // SQLDelight
+                implementation(Square.sqlDelight.drivers.android)
             }
         }
         val androidTest by getting {
@@ -74,6 +78,9 @@ kotlin {
             dependencies {
                 // Ktor Client
                 implementation(Ktor.client.darwin)
+
+                // SQLDelight
+                implementation(Square.sqlDelight.drivers.native)
             }
         }
         val iosX64Test by getting
@@ -93,6 +100,13 @@ android {
     defaultConfig {
         minSdk = versionAndroidSdkMin
         targetSdk = versionAndroidSdk
+    }
+}
+
+sqldelight {
+    database("RecipeDatabase") {
+        packageName = "dev.gressier.food2fork.datasource.cache"
+        sourceFolders = listOf("sqldelight")
     }
 }
 
