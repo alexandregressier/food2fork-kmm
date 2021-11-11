@@ -10,26 +10,7 @@ CREATE TABLE recipeEntity (
     updatedAt REAL NOT NULL
 );
 
-selectAll:
-SELECT * FROM recipeEntity;
-
-searchRecipes:
-SELECT * FROM recipeEntity
-WHERE title LIKE ('%' || :query || '%')
-OR ingredients LIKE ('%' || :query || '%')
-LIMIT :pageSize
-OFFSET :offset;
-
-getAllRecipes:
-SELECT * FROM recipeEntity
-LIMIT :pageSize
-OFFSET :offset;
-
-getRecipeById:
-SELECT * FROM recipeEntity
-WHERE id = :id;
-
-insertRecipe:
+insert:
 INSERT OR REPLACE
 INTO recipeEntity (
     id,
@@ -42,3 +23,19 @@ INTO recipeEntity (
     addedAt,
     updatedAt
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectAll:
+SELECT * FROM recipeEntity
+LIMIT :pageSize
+OFFSET :offset;
+
+search:
+SELECT * FROM recipeEntity
+WHERE title LIKE ('%' || :query || '%')
+OR ingredients LIKE ('%' || :query || '%')
+LIMIT :pageSize
+OFFSET :offset;
+
+selectById:
+SELECT * FROM recipeEntity
+WHERE id = :id;

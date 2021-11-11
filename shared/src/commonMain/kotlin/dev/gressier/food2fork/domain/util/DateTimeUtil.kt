@@ -7,7 +7,7 @@ object DateTimeUtil {
     fun now(): LocalDateTime =
         Clock.System.now().toLocalDateTime(TimeZone.UTC)
 
-    fun toLocalDate(date: Double): LocalDateTime =
+    fun toLocalDateTime(date: Double): LocalDateTime =
         Instant.fromEpochMilliseconds(date.toLong()).toLocalDateTime(TimeZone.UTC)
 
     fun toEpochMilliseconds(date: LocalDateTime): Double =

@@ -18,8 +18,8 @@ fun RecipeDto.toRecipe(): Recipe =
         rating,
         sourceUrl,
         ingredients,
-        addedAt = DateTimeUtil.toLocalDate(longDateAdded.toDouble()),
-        updatedAt = DateTimeUtil.toLocalDate(longDateUpdated.toDouble()),
+        addedAt = DateTimeUtil.toLocalDateTime(longDateAdded.toDouble()),
+        updatedAt = DateTimeUtil.toLocalDateTime(longDateUpdated.toDouble()),
     )
 
 fun List<RecipeDto>.toRecipeList(): List<Recipe> =
