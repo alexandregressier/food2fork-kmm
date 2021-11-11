@@ -10,7 +10,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin") version "2.40"
+    id("dagger.hilt.android.plugin")
 }
 
 android {

@@ -11,6 +11,12 @@ plugins {
     id("com.android.application") apply false
 }
 
+buildscript {
+    dependencies {
+        classpath(Google.dagger.hilt.android.gradlePlugin)
+    }
+}
+
 tasks.wrapper {
     gradleVersion = versionGradle
 }
