@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.gressier.food2fork.android.BaseApplication
+import dev.gressier.food2fork.android.AppContext
 import javax.inject.Singleton
 
 @Module
@@ -15,6 +15,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApplication(@ApplicationContext appContext: Context): BaseApplication =
-        appContext as BaseApplication
+    fun provideApplication(@ApplicationContext context: Context): AppContext =
+        context as AppContext
 }
