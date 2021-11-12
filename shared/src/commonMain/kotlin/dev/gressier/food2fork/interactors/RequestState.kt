@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.domain.util
+package dev.gressier.food2fork.interactors
 
 sealed class RequestState<out T> {
     object Idle : RequestState<Nothing>()

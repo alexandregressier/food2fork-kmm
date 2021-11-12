@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.android.presentation.recipelist.RecipeId
 import dev.gressier.food2fork.domain.model.Recipe
-import dev.gressier.food2fork.domain.util.RequestState
+import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

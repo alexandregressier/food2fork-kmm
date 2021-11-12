@@ -3,7 +3,7 @@ package dev.gressier.food2fork.interactors.recipelist
 import dev.gressier.food2fork.datasource.cache.RecipeCache
 import dev.gressier.food2fork.datasource.network.RecipeService
 import dev.gressier.food2fork.domain.model.Recipe
-import dev.gressier.food2fork.domain.util.RequestState
+import dev.gressier.food2fork.interactors.RequestState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
