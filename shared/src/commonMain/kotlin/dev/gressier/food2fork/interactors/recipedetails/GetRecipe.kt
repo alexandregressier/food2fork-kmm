@@ -1,6 +1,6 @@
 package dev.gressier.food2fork.interactors.recipedetails
 
-import dev.gressier.food2fork.datasource.network.RecipeService
+import dev.gressier.food2fork.datasource.cache.RecipeCache
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.domain.util.RequestState
@@ -8,14 +8,17 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class GetRecipe(
-    private val recipeService: RecipeService,
+    private val recipeCache: RecipeCache,
 ) {
     fun execute(id: RecipeId): Flow<RequestState<Recipe>> =
         flow {
             emit(RequestState.Loading)
             try {
-                val recipe = recipeService.get(id)
-                emit(RequestState.Success(recipe))
+                emit(
+                    recipeCache.get(id)?.let { recipe ->
+                        RequestState.Success(recipe)
+                    } ?: RequestState.Empty
+                )
             } catch (e: Exception) {
                 emit(RequestState.Error(e))
             }

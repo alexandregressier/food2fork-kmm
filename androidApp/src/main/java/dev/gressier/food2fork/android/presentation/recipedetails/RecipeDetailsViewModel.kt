@@ -34,6 +34,7 @@ class RecipeDetailsViewModel @Inject constructor(
                             recipe.value = it.data
                             Log.d("RecipeDetailsViewModel", "${it.data}")
                         }
+                        is RequestState.Empty -> Log.e("RecipeDetailsViewModel", "No recipe for ID = $recipeId")
                         is RequestState.Error -> Log.e("RecipeDetailsViewModel", "${it.throwable.message}")
                     }
                 }.launchIn(viewModelScope)
