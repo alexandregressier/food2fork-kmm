@@ -1,1 +1,1 @@
-# Food2Fork KMM
+# Food2Fork - Kotlin Multiplatform Mobile (KMM)
