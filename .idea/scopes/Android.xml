@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Android" pattern="file[food2fork.androidApp]:*/||file[food2fork.shared]:src/androidMain/*/||file[food2fork.shared]:src/androidTest/*/" />
+</component>

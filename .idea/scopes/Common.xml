@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Common" pattern="file[food2fork.shared]:*||file[food2fork.shared]:src/commonMain/*/||file[food2fork.shared.commonMain]:*/||file[food2fork.shared]:src/commonTest/*/||file[food2fork.shared.commonTest]:*/" />
+</component>

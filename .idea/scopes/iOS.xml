@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="iOS" pattern="file[food2fork]:iosApp/*/||file[food2fork.shared]:src/iosMain/*/||file[food2fork.shared.iosMain]:*/||file[food2fork.shared]:src/iosTest/*/||file[food2fork.shared.iosTest]:*/" />
+</component>
