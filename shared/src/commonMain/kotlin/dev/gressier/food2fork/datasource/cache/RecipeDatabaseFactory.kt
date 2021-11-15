@@ -3,6 +3,7 @@ package dev.gressier.food2fork.datasource.cache
 import com.squareup.sqldelight.db.SqlDriver
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.util.DateTimeUtil
+import io.ktor.http.*
 
 expect class DriverFactory {
     fun createDriver(): SqlDriver
@@ -20,9 +21,9 @@ fun RecipeEntity.toRecipe(): Recipe =
          id.toInt(),
          title,
          publisher,
-         featuredImageUrl,
+         Url(featuredImageUrl),
          rating.toInt(),
-         sourceUrl,
+         Url(sourceUrl),
          ingredients.split(", "),
          DateTimeUtil.toLocalDateTime(addedAt),
          DateTimeUtil.toLocalDateTime(updatedAt),

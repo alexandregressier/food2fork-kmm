@@ -4,6 +4,7 @@ import dev.gressier.food2fork.datasource.network.model.RecipeDto
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.util.DateTimeUtil
 import io.ktor.client.*
+import io.ktor.http.*
 
 expect class KtorClientFactory {
     fun build(): HttpClient
@@ -14,9 +15,9 @@ fun RecipeDto.toRecipe(): Recipe =
         id = pk,
         title,
         publisher,
-        featuredImageUrl = featuredImage,
+        featuredImageUrl = Url(featuredImage),
         rating,
-        sourceUrl,
+        Url(sourceUrl),
         ingredients,
         addedAt = DateTimeUtil.toLocalDateTime(longDateAdded.toDouble()),
         updatedAt = DateTimeUtil.toLocalDateTime(longDateUpdated.toDouble()),
