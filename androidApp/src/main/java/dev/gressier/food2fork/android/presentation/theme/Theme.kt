@@ -7,21 +7,28 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import dev.gressier.food2fork.android.presentation.theme.*
 
 private val LightColorScheme = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200,
+    primary = Blue600,
+    primaryVariant = Blue400,
+    secondary = Color.White,
+    secondaryVariant = Teal300,
+    background = Gray1,
+    surface = Color.White,
+    error = RedErrorDark,
+    onPrimary = Black2,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Black2,
+    onError = RedErrorLight,
 )
 
-private val DarkColorScheme = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200,
-)
+private val DarkColorScheme = darkColors()
 
 @Composable
 fun Food2ForkTheme(
