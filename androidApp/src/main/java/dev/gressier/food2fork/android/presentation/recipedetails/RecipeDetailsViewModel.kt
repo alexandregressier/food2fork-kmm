@@ -7,8 +7,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.gressier.food2fork.android.presentation.recipelist.RecipeId
 import dev.gressier.food2fork.domain.model.Recipe
+import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
 import kotlinx.coroutines.flow.launchIn

@@ -20,7 +20,10 @@ fun Navigation() {
         composable(Screen.RecipeList.route) {
             val viewModel = hiltViewModel<RecipeListViewModel>()
             RecipeListView(
-                onRecipeSelect = { recipeId -> navController.navigate("${Screen.RecipeDetails.route}/$recipeId") },
+                state = viewModel.state,
+                onRecipeListItemClick = { recipeId ->
+                    navController.navigate("${Screen.RecipeDetails.route}/$recipeId")
+                },
             )
         }
         composable(

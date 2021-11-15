@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.android.presentation.recipedetails.components
+package dev.gressier.food2fork.android.presentation.recipelist.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
