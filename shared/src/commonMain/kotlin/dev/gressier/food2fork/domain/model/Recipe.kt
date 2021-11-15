@@ -15,4 +15,6 @@ data class Recipe(
     val ingredients: List<String> = listOf(),
     val addedAt: LocalDateTime,
     val updatedAt: LocalDateTime,
-)
+) {
+    companion object
+}

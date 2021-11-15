@@ -36,7 +36,12 @@ android {
     kotlinOptions {
         jvmTarget = "${compileOptions.sourceCompatibility}"
         freeCompilerArgs = freeCompilerArgs + listOf(
-            "-Xopt-in=coil.annotation.ExperimentalCoilApi",
+            "-Xopt-in=${
+                listOf(
+                    "androidx.compose.material.ExperimentalMaterialApi",
+                    "coil.annotation.ExperimentalCoilApi",
+                ).joinToString(",")
+            }"
         )
     }
     buildFeatures {

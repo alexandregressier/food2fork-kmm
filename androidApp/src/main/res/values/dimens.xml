@@ -1,4 +1,10 @@
 <resources>
-    <!-- Recipes -->
+    <!-- Recipe Image -->
     <dimen name="recipeImage_height">260dp</dimen>
+
+    <!-- Recipe Card -->
+    <dimen name="recipeCard_padding">6dp</dimen>
+    <dimen name="recipeCard_elevation">8dp</dimen>
+    <dimen name="recipeCard_row_horizontalPadding">8dp</dimen>
+    <dimen name="recipeCard_row_verticalPadding">12dp</dimen>
 </resources>
