@@ -8,5 +8,5 @@ interface RecipeCache {
     fun insert(recipes: List<Recipe>)
     fun getAll(page: Int): List<Recipe>
     fun search(query: String, page: Int): List<Recipe>
-    @Throws(NullPointerException::class) fun get(recipeId: RecipeId): Recipe?
+    fun get(recipeId: RecipeId): Recipe?
 }
