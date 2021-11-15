@@ -1,0 +1,4 @@
+<resources>
+    <!-- Recipes -->
+    <dimen name="recipeImage_height">260dp</dimen>
+</resources>

@@ -35,6 +35,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "${compileOptions.sourceCompatibility}"
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-Xopt-in=coil.annotation.ExperimentalCoilApi",
+        )
     }
     buildFeatures {
         compose = true
@@ -81,4 +84,7 @@ dependencies {
     // Navigation
     implementation(AndroidX.navigation.compose)
     implementation(AndroidX.hilt.navigationCompose)
+
+    // Coil
+    implementation(COIL.compose)
 }
