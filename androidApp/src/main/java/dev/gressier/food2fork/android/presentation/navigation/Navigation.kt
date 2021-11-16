@@ -21,8 +21,8 @@ fun Navigation() {
             val viewModel = hiltViewModel<RecipeListViewModel>()
             RecipeListView(
                 state = viewModel.state,
-                onEvent = viewModel::onEvent,
-                onRecipeListItemClick = { recipeId ->
+                emit = viewModel::handleEvent,
+                navigateToRecipeDetails = { recipeId ->
                     navController.navigate("${Screen.RecipeDetails.route}/$recipeId")
                 },
             )

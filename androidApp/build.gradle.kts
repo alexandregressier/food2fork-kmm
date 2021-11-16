@@ -38,6 +38,7 @@ android {
         freeCompilerArgs = freeCompilerArgs + listOf(
             "-Xopt-in=${
                 listOf(
+                    "androidx.compose.ui.ExperimentalComposeUiApi",
                     "androidx.compose.material.ExperimentalMaterialApi",
                     "coil.annotation.ExperimentalCoilApi",
                 ).joinToString(",")

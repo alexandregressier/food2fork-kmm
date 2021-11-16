@@ -23,17 +23,19 @@ class RecipeListViewModel @Inject constructor(
     var state: RecipeListState by mutableStateOf(RecipeListState())
 
     init {
-        onEvent(RecipeListEvent.LoadRecipes)
+        handleEvent(RecipeListEvent.RecipesLoad)
     }
 
-    fun onEvent(event: RecipeListEvent) {
+    fun handleEvent(event: RecipeListEvent) {
         when (event) {
-            RecipeListEvent.LoadRecipes -> loadRecipes()
-            RecipeListEvent.NextPage -> nextPage()
+            RecipeListEvent.RecipesLoad -> handleRecipesLoad()
+            RecipeListEvent.NextPage -> handleNextPage()
+            is RecipeListEvent.QueryChange -> { handleQueryChange(event.query) }
+            RecipeListEvent.Search -> handleSearch()
         }
     }
 
-    private fun loadRecipes() {
+    private fun handleRecipesLoad() {
         searchRecipes.execute(query = state.query, page = state.page)
             .onEach {
                 when (it) {
@@ -52,8 +54,17 @@ class RecipeListViewModel @Inject constructor(
             }.launchIn(viewModelScope)
     }
 
-    private fun nextPage() {
+    private fun handleNextPage() {
         state = state.copy(page = state.page + 1)
-        loadRecipes()
+        handleRecipesLoad()
+    }
+
+    private fun handleQueryChange(query: String) {
+        state = state.copy(query = query)
+    }
+
+    private fun handleSearch() {
+        state = state.copy(page =  1, recipes = listOf())
+        handleRecipesLoad()
     }
 }

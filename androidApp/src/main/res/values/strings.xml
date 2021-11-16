@@ -4,4 +4,10 @@
     <!-- Screen Labels -->
     <string name="screenLabel_recipeList">Recipe List</string>
     <string name="screenLabel_recipeDetails">Recipe Details</string>
+
+    <!-- Placeholders -->
+    <string name="placeholder_searchRecipes">Search…</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_icon_search">Search</string>
 </resources>
