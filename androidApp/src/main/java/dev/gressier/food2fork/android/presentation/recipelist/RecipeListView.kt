@@ -26,11 +26,15 @@ fun RecipeListView(
     ) {
         state.apply {
             Scaffold(
-                topBar = { SearchTopBar(
-                    query,
-                    onQueryChange = { query -> emit(RecipeListEvent.QueryChange(query) )},
-                    onSearch = { emit(RecipeListEvent.Search) },
-                ) },
+                topBar = {
+                    SearchTopBar(
+                        query,
+                        selectedFoodCategory = selectedFoodCategory,
+                        onQueryChange = { query -> emit(RecipeListEvent.QueryChange(query)) },
+                        onFoodCategorySelect = { foodCategory -> emit(RecipeListEvent.FoodCategorySelect(foodCategory)) },
+                        onSearch = { emit(RecipeListEvent.Search) },
+                    )
+                },
             ) {
                 RecipeList(
                     isLoading,

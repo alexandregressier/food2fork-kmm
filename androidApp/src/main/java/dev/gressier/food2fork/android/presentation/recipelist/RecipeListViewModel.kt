@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
+import dev.gressier.food2fork.presentation.recipelist.FoodCategory
 import dev.gressier.food2fork.presentation.recipelist.RecipeListEvent
 import dev.gressier.food2fork.presentation.recipelist.RecipeListState
 import kotlinx.coroutines.flow.launchIn
@@ -31,6 +32,7 @@ class RecipeListViewModel @Inject constructor(
             RecipeListEvent.RecipesLoad -> handleRecipesLoad()
             RecipeListEvent.NextPage -> handleNextPage()
             is RecipeListEvent.QueryChange -> { handleQueryChange(event.query) }
+            is RecipeListEvent.FoodCategorySelect -> { handleFoodCategorySelect(event.category) }
             RecipeListEvent.Search -> handleSearch()
         }
     }
@@ -60,7 +62,12 @@ class RecipeListViewModel @Inject constructor(
     }
 
     private fun handleQueryChange(query: String) {
-        state = state.copy(query = query)
+        state = state.copy(query = query, selectedFoodCategory = null)
+    }
+
+    private fun handleFoodCategorySelect(category: FoodCategory) {
+        state = state.copy(query = category.name, selectedFoodCategory = category)
+        handleSearch()
     }
 
     private fun handleSearch() {
