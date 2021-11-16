@@ -36,7 +36,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 // KotlinX
-                implementation(KotlinX.datetime)
+                api(KotlinX.datetime)
                 implementation(KotlinX.serialization.core)
 
                 // Ktor Client
