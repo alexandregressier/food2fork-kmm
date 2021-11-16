@@ -8,11 +8,13 @@ import androidx.compose.ui.Modifier
 import dev.gressier.food2fork.android.presentation.components.CircularIndeterminateProgressBar
 import dev.gressier.food2fork.android.presentation.theme.Gray1
 import dev.gressier.food2fork.domain.model.RecipeId
+import dev.gressier.food2fork.presentation.recipelist.RecipeListEvent
 import dev.gressier.food2fork.presentation.recipelist.RecipeListState
 
 @Composable
 fun RecipeListView(
     state: RecipeListState,
+    onEvent: (RecipeListEvent) -> Unit,
     onRecipeListItemClick: (RecipeId) -> Unit = {},
 ) {
     Box(
@@ -21,7 +23,13 @@ fun RecipeListView(
             .background(color = Gray1),
     ) {
         state.apply {
-            RecipeList(isLoading, recipes, onRecipeListItemClick)
+            RecipeList(
+                isLoading,
+                recipes,
+                page,
+                onNextPage = { onEvent(RecipeListEvent.NextPage) },
+                onRecipeListItemClick,
+            )
             if (isLoading) {
                 CircularIndeterminateProgressBar(isDisplayed = isLoading)
             }

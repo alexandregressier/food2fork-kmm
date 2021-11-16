@@ -7,9 +7,9 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
+import dev.gressier.food2fork.presentation.recipelist.RecipeListEvent
 import dev.gressier.food2fork.presentation.recipelist.RecipeListState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -17,13 +17,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(
-    searchRecipes: SearchRecipes,
+    private val searchRecipes: SearchRecipes,
 ) : ViewModel() {
 
     var state: RecipeListState by mutableStateOf(RecipeListState())
 
     init {
-        // Search Recipes
+        onEvent(RecipeListEvent.LoadRecipes)
+    }
+
+    fun onEvent(event: RecipeListEvent) {
+        when (event) {
+            RecipeListEvent.LoadRecipes -> loadRecipes()
+            RecipeListEvent.NextPage -> nextPage()
+        }
+    }
+
+    private fun loadRecipes() {
         searchRecipes.execute(query = state.query, page = state.page)
             .onEach {
                 when (it) {
@@ -32,7 +42,7 @@ class RecipeListViewModel @Inject constructor(
                     }
                     is RequestState.Success -> {
                         state = state.copy(isLoading = false)
-                        appendRecipes(it.data)
+                        state = state.copy(recipes = state.recipes + it.data)
                     }
                     is RequestState.Error -> {
                         state = state.copy(isLoading = false)
@@ -42,7 +52,8 @@ class RecipeListViewModel @Inject constructor(
             }.launchIn(viewModelScope)
     }
 
-    private fun appendRecipes(recipes: List<Recipe>) {
-        state = state.copy(recipes = state.recipes + recipes)
+    private fun nextPage() {
+        state = state.copy(page = state.page + 1)
+        loadRecipes()
     }
 }
