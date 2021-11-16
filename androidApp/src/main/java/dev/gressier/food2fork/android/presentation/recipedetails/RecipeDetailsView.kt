@@ -1,7 +1,9 @@
 package dev.gressier.food2fork.android.presentation.recipedetails
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import dev.gressier.food2fork.android.presentation.components.CircularIndeterminateProgressBar
+import dev.gressier.food2fork.android.presentation.recipedetails.components.LoadingRecipeView
 import dev.gressier.food2fork.android.presentation.recipedetails.components.RecipeView
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState
 
@@ -14,7 +16,10 @@ fun RecipeDetailsView(
             RecipeView(recipe)
         }
         if (isLoading) {
-            CircularIndeterminateProgressBar(isDisplayed = isLoading)
+            Box {
+                LoadingRecipeView()
+                CircularIndeterminateProgressBar(isDisplayed = isLoading)
+            }
         }
     }
 }

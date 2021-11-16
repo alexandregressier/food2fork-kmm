@@ -8,12 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import dev.gressier.food2fork.android.R
 
 @Composable
 fun LoadingRecipeList(
-    imageHeight: Dp,
+    imageHeight: Dp = dimensionResource(R.dimen.recipeImage_height),
     padding: Dp = 16.dp,
 ) {
     BoxWithConstraints(Modifier.fillMaxSize()) {
