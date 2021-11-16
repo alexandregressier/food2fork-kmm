@@ -11,4 +11,7 @@
     <!-- Content Descriptions -->
     <string name="cd_icon_search">Search</string>
     <string name="cd_icon_clear">Clear</string>
+
+    <!-- Dialogs -->
+    <string name="dialog_button_ok">OK</string>
 </resources>

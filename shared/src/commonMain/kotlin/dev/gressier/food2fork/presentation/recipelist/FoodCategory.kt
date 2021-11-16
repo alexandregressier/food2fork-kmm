@@ -10,5 +10,5 @@ enum class FoodCategory {
     Vegan,
     Pizza,
     Donut,
-    Mysterious,
+    Bad,
 }

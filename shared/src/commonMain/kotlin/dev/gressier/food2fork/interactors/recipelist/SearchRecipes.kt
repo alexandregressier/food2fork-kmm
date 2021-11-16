@@ -4,6 +4,7 @@ import dev.gressier.food2fork.datasource.cache.RecipeCache
 import dev.gressier.food2fork.datasource.network.RecipeService
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.interactors.RequestState
+import dev.gressier.food2fork.presentation.recipelist.FoodCategory
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -15,6 +16,7 @@ class SearchRecipes(
         flow {
             emit(RequestState.Loading)
             try {
+                if (query == FoodCategory.Bad.name) throw Exception("Uh oh... You searched for bad recipes. Not cool!")
                 val recipes = recipeService.search(query, page)
                 recipeCache.insert(recipes)
                 val cachedRecipes = recipeCache.run {

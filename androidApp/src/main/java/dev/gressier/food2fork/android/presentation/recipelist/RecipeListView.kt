@@ -7,6 +7,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import dev.gressier.food2fork.android.presentation.components.CircularIndeterminateProgressBar
+import dev.gressier.food2fork.android.presentation.components.ErrorQueueDialogs
 import dev.gressier.food2fork.android.presentation.recipelist.components.SearchTopBar
 import dev.gressier.food2fork.android.presentation.theme.Gray1
 import dev.gressier.food2fork.domain.model.RecipeId
@@ -25,6 +26,7 @@ fun RecipeListView(
             .background(color = Gray1),
     ) {
         state.apply {
+            ErrorQueueDialogs(errorQueue)
             Scaffold(
                 topBar = {
                     SearchTopBar(

@@ -1,6 +1,5 @@
 package dev.gressier.food2fork.android.presentation.recipelist
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -50,7 +49,7 @@ class RecipeListViewModel @Inject constructor(
                     }
                     is RequestState.Error -> {
                         state = state.copy(isLoading = false)
-                        Log.e("RecipeListViewModel", "${it.throwable.message}")
+                        state.errorQueue.enqueue(it.throwable)
                     }
                 }
             }.launchIn(viewModelScope)
