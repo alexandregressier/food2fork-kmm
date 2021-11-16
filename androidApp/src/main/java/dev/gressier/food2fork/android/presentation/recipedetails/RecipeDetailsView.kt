@@ -1,16 +1,20 @@
 package dev.gressier.food2fork.android.presentation.recipedetails
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import dev.gressier.food2fork.android.presentation.components.CircularIndeterminateProgressBar
 import dev.gressier.food2fork.android.presentation.recipedetails.components.RecipeView
-import dev.gressier.food2fork.domain.model.Recipe
+import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState
 
 @Composable
 fun RecipeDetailsView(
-    recipe: Recipe?,
+    state: RecipeDetailsState,
 ) {
-    recipe?.let {
-        RecipeView(recipe)
+    state.apply {
+        recipe?.let { recipe ->
+            RecipeView(recipe)
+        }
+        if (isLoading) {
+            CircularIndeterminateProgressBar(isDisplayed = isLoading)
+        }
     }
-        ?: Text("Loading...")
 }

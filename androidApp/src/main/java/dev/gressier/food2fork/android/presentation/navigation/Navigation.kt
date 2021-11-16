@@ -33,7 +33,7 @@ fun Navigation() {
         ) {
             val viewModel = hiltViewModel<RecipeDetailsViewModel>()
             RecipeDetailsView(
-                recipe = viewModel.recipe.value,
+                state = viewModel.state,
             )
         }
     }

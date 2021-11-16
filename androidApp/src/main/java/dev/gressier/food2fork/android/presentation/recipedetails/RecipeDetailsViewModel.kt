@@ -1,16 +1,18 @@
 package dev.gressier.food2fork.android.presentation.recipedetails
 
 import android.util.Log
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
+import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsEvent
+import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -18,26 +20,38 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipeDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    getRecipe: GetRecipe,
+    private val getRecipe: GetRecipe,
 ) : ViewModel() {
 
-    val recipe: MutableState<Recipe?> = mutableStateOf(null)
+    var state: RecipeDetailsState by mutableStateOf(RecipeDetailsState())
 
     init {
-        // Get Recipe
         savedStateHandle.get<RecipeId>("recipeId")?.let { recipeId ->
-            getRecipe.execute(recipeId)
-                .onEach {
-                    when (it) {
-                        RequestState.Loading -> Log.d("RecipeDetailsViewModel", "Loading...")
-                        is RequestState.Success -> {
-                            recipe.value = it.data
-                            Log.d("RecipeDetailsViewModel", "${it.data}")
-                        }
-                        is RequestState.Empty -> Log.e("RecipeDetailsViewModel", "No recipe for ID = $recipeId")
-                        is RequestState.Error -> Log.e("RecipeDetailsViewModel", "${it.throwable.message}")
-                    }
-                }.launchIn(viewModelScope)
+            handleEvent(RecipeDetailsEvent.RecipeLoad(recipeId))
         }
+    }
+
+    fun handleEvent(event: RecipeDetailsEvent) {
+        when (event) {
+            is RecipeDetailsEvent.RecipeLoad -> handleRecipeLoad(event.recipeId)
+        }
+    }
+
+    private fun handleRecipeLoad(recipeId: RecipeId) {
+        getRecipe.execute(recipeId)
+            .onEach {
+                when (it) {
+                    RequestState.Loading -> {
+                        state = state.copy(isLoading = true)
+                    }
+                    is RequestState.Success -> {
+                        state = state.copy(isLoading = false, recipe = it.data)
+                    }
+                    is RequestState.Error -> {
+                        state = state.copy(isLoading = false)
+                        Log.e("RecipeDetailsViewModel", "${it.throwable.message}")
+                    }
+                }
+            }.launchIn(viewModelScope)
     }
 }
