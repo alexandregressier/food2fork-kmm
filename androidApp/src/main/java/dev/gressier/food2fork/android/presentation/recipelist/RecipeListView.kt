@@ -21,10 +21,10 @@ fun RecipeListView(
             .background(color = Gray1),
     ) {
         state.apply {
+            RecipeList(isLoading, recipes, onRecipeListItemClick)
             if (isLoading) {
                 CircularIndeterminateProgressBar(isDisplayed = isLoading)
             }
-            RecipeList(isLoading, recipes, onRecipeListItemClick)
         }
     }
 }
