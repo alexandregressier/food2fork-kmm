@@ -32,6 +32,7 @@ class RecipeListViewModel @Inject constructor(
             RecipeListEvent.RecipesLoad -> handleRecipesLoad()
             RecipeListEvent.NextPage -> handleNextPage()
             is RecipeListEvent.QueryChange -> { handleQueryChange(event.query) }
+            RecipeListEvent.QueryClear -> handleQueryClear()
             is RecipeListEvent.FoodCategorySelect -> { handleFoodCategorySelect(event.category) }
             RecipeListEvent.Search -> handleSearch()
         }
@@ -63,6 +64,11 @@ class RecipeListViewModel @Inject constructor(
 
     private fun handleQueryChange(query: String) {
         state = state.copy(query = query, selectedFoodCategory = null)
+    }
+
+    private fun handleQueryClear() {
+        state = state.copy(query = "", selectedFoodCategory = null)
+        handleSearch()
     }
 
     private fun handleFoodCategorySelect(category: FoodCategory) {

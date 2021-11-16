@@ -10,4 +10,5 @@
 
     <!-- Content Descriptions -->
     <string name="cd_icon_search">Search</string>
+    <string name="cd_icon_clear">Clear</string>
 </resources>

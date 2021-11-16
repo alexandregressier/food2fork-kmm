@@ -31,6 +31,7 @@ fun RecipeListView(
                         query,
                         selectedFoodCategory = selectedFoodCategory,
                         onQueryChange = { query -> emit(RecipeListEvent.QueryChange(query)) },
+                        onQueryClear = { emit(RecipeListEvent.QueryClear) },
                         onFoodCategorySelect = { foodCategory -> emit(RecipeListEvent.FoodCategorySelect(foodCategory)) },
                         onSearch = { emit(RecipeListEvent.Search) },
                     )
