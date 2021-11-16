@@ -46,8 +46,7 @@ class RecipeListViewModel @Inject constructor(
                         state = state.copy(isLoading = true)
                     }
                     is RequestState.Success -> {
-                        state = state.copy(isLoading = false)
-                        state = state.copy(recipes = state.recipes + it.data)
+                        state = state.copy(isLoading = false, recipes = state.recipes + it.data)
                     }
                     is RequestState.Error -> {
                         state = state.copy(isLoading = false)
