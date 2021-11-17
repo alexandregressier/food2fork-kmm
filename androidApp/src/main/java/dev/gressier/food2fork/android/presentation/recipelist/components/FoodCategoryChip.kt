@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.gressier.food2fork.presentation.recipelist.FoodCategory
+import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
 
 @Composable
 fun FoodCategoryChip(

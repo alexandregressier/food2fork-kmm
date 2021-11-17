@@ -21,7 +21,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import dev.gressier.food2fork.android.R
-import dev.gressier.food2fork.presentation.recipelist.FoodCategory
+import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
 
 @Composable
 fun SearchTopBar(

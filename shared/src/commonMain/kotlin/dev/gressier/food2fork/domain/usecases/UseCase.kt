@@ -4,7 +4,7 @@ import dev.gressier.food2fork.datasource.cache.RecipeCache
 import dev.gressier.food2fork.datasource.network.RecipeService
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
-import dev.gressier.food2fork.presentation.recipelist.FoodCategory
+import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
 import dev.gressier.food2fork.util.RequestState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

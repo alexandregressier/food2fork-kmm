@@ -4,6 +4,7 @@ import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.util.Queue
 import dev.gressier.food2fork.util.emptyQueue
 import dev.gressier.food2fork.presentation.model.VisibleMessage
+import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
 
 data class RecipeListState(
     val isLoading: Boolean = false,

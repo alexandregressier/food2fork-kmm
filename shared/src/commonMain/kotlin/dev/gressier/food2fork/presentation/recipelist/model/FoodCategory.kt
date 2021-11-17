@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.presentation.recipelist
+package dev.gressier.food2fork.presentation.recipelist.model
 
 enum class FoodCategory {
     Chicken,
