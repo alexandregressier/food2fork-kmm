@@ -1,6 +1,6 @@
 package dev.gressier.food2fork.data.local
 
-import dev.gressier.food2fork.data.remote.RecipeServiceImpl
+import dev.gressier.food2fork.data.remote.RecipeWebServiceImpl
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.util.DateTimeUtil
@@ -42,8 +42,8 @@ class RecipeCacheImpl(
 
     override fun getAll(page: Int): List<Recipe> =
         recipeQueries.selectAll(
-            pageSize = RecipeServiceImpl.RECIPE_PAGINATION_PAGE_SIZE.toLong(),
-            offset = ((page - 1) * RecipeServiceImpl.RECIPE_PAGINATION_PAGE_SIZE).toLong(),
+            pageSize = RecipeWebServiceImpl.RECIPE_PAGINATION_PAGE_SIZE.toLong(),
+            offset = ((page - 1) * RecipeWebServiceImpl.RECIPE_PAGINATION_PAGE_SIZE).toLong(),
         )
             .executeAsList()
             .toRecipeList()
@@ -51,8 +51,8 @@ class RecipeCacheImpl(
     override fun search(query: String, page: Int): List<Recipe> =
         recipeQueries.search(
             query = query,
-            pageSize = RecipeServiceImpl.RECIPE_PAGINATION_PAGE_SIZE.toLong(),
-            offset = ((page - 1) * RecipeServiceImpl.RECIPE_PAGINATION_PAGE_SIZE).toLong(),
+            pageSize = RecipeWebServiceImpl.RECIPE_PAGINATION_PAGE_SIZE.toLong(),
+            offset = ((page - 1) * RecipeWebServiceImpl.RECIPE_PAGINATION_PAGE_SIZE).toLong(),
         )
             .executeAsList()
             .toRecipeList()

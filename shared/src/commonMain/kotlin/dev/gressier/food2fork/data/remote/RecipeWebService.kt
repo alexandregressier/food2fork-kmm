@@ -8,15 +8,15 @@ import io.ktor.client.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
-interface RecipeService {
+interface RecipeWebService {
     suspend fun search(query: String, page: Int): List<Recipe>
     suspend fun get(id: RecipeId): Recipe
 }
 
-class RecipeServiceImpl(
+class RecipeWebServiceImpl(
     private val httpClient: HttpClient,
     private val baseUrl: String = BASE_URL,
-) : RecipeService {
+) : RecipeWebService {
 
     override suspend fun search(query: String, page: Int): List<Recipe> =
         httpClient.get<RecipeSearchResponse> {

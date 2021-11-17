@@ -1,7 +1,7 @@
 package dev.gressier.food2fork.domain.usecases
 
 import dev.gressier.food2fork.data.local.RecipeCache
-import dev.gressier.food2fork.data.remote.RecipeService
+import dev.gressier.food2fork.data.remote.RecipeWebService
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flow
 object UseCase {
 
     class SearchRecipes(
-        private val recipeService: RecipeService,
+        private val recipeWebService: RecipeWebService,
         private val recipeCache: RecipeCache,
     ) {
         operator fun invoke(query: String = "", page: Int): Flow<RequestState<List<Recipe>>> =
@@ -22,7 +22,7 @@ object UseCase {
                     if (query == FoodCategory.Bad.name) {
                         throw Exception("Uh oh... You searched for bad recipes. Not cool!")
                     }
-                    val recipes = recipeService.search(query, page)
+                    val recipes = recipeWebService.search(query, page)
                     recipeCache.insert(recipes)
                     val cachedRecipes = recipeCache.run {
                         if (query.isBlank())

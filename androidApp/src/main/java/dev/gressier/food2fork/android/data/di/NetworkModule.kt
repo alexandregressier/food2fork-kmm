@@ -5,8 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.gressier.food2fork.data.remote.KtorClientFactory
-import dev.gressier.food2fork.data.remote.RecipeService
-import dev.gressier.food2fork.data.remote.RecipeServiceImpl
+import dev.gressier.food2fork.data.remote.RecipeWebService
+import dev.gressier.food2fork.data.remote.RecipeWebServiceImpl
 import io.ktor.client.*
 import javax.inject.Singleton
 
@@ -21,6 +21,6 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRecipeService(httpClient: HttpClient): RecipeService =
-        RecipeServiceImpl(httpClient)
+    fun provideRecipeWebService(httpClient: HttpClient): RecipeWebService =
+        RecipeWebServiceImpl(httpClient)
 }
