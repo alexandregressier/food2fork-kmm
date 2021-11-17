@@ -1,6 +1,6 @@
-package dev.gressier.food2fork.datasource.cache
+package dev.gressier.food2fork.data.local
 
-import dev.gressier.food2fork.datasource.network.RecipeServiceImpl.Companion.RECIPE_PAGINATION_PAGE_SIZE
+import dev.gressier.food2fork.data.remote.RecipeServiceImpl.Companion.RECIPE_PAGINATION_PAGE_SIZE
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.util.DateTimeUtil

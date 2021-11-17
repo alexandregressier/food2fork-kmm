@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.gressier.food2fork.android.AppContext
-import dev.gressier.food2fork.datasource.cache.*
+import dev.gressier.food2fork.data.local.*
 import javax.inject.Singleton
 
 @Module

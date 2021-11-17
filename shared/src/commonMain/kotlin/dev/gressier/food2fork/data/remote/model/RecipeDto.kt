@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.datasource.network.model
+package dev.gressier.food2fork.data.remote.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

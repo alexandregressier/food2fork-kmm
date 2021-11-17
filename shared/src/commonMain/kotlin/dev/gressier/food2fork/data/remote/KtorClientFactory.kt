@@ -1,6 +1,6 @@
-package dev.gressier.food2fork.datasource.network
+package dev.gressier.food2fork.data.remote
 
-import dev.gressier.food2fork.datasource.network.model.RecipeDto
+import dev.gressier.food2fork.data.remote.model.RecipeDto
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.util.DateTimeUtil
 import io.ktor.client.*

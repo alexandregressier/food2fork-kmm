@@ -105,7 +105,7 @@ android {
 
 sqldelight {
     database("RecipeDatabase") {
-        packageName = "dev.gressier.food2fork.datasource.cache"
+        packageName = "dev.gressier.food2fork.data.local"
         sourceFolders = listOf("sqldelight")
     }
 }

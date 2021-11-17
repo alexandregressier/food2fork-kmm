@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.datasource.network
+package dev.gressier.food2fork.data.remote
 
 import io.ktor.client.*
 import io.ktor.client.engine.ios.*

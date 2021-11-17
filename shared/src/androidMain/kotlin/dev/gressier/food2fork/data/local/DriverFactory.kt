@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.datasource.cache
+package dev.gressier.food2fork.data.local
 
 import android.content.Context
 import com.squareup.sqldelight.android.AndroidSqliteDriver

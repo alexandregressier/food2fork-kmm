@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.datasource.cache
+package dev.gressier.food2fork.data.local
 
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
