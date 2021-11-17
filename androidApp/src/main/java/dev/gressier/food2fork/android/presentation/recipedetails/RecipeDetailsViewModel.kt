@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.domain.model.RecipeId
-import dev.gressier.food2fork.domain.usecase.UseCase
-import dev.gressier.food2fork.domain.usecase.model.RequestState
+import dev.gressier.food2fork.domain.usecases.UseCase
+import dev.gressier.food2fork.domain.usecases.model.RequestState
 import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsEvent
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState

@@ -8,8 +8,8 @@ import dev.gressier.food2fork.android.AppContext
 import dev.gressier.food2fork.data.local.RecipeDatabase
 import dev.gressier.food2fork.data.local.RecipeDatabaseFactory
 import dev.gressier.food2fork.data.local.SqlDriverFactory
-import dev.gressier.food2fork.data.local.dao.RecipeDao
-import dev.gressier.food2fork.data.local.dao.RecipeDaoImpl
+import dev.gressier.food2fork.data.local.daos.RecipeDao
+import dev.gressier.food2fork.data.local.daos.RecipeDaoImpl
 import javax.inject.Singleton
 
 @Module

@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.domain.usecase.model
+package dev.gressier.food2fork.domain.usecases.model
 
 sealed class RequestState<out T> {
     object Idle : RequestState<Nothing>()

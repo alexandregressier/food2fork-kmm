@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import dev.gressier.food2fork.android.presentation.recipelist.components.LoadingRecipeList
 import dev.gressier.food2fork.android.presentation.recipelist.components.RecipeCard
-import dev.gressier.food2fork.data.remote.webservice.RecipeWebServiceImpl.Companion.RECIPE_PAGINATION_PAGE_SIZE
+import dev.gressier.food2fork.data.remote.webservices.RecipeWebServiceImpl.Companion.RECIPE_PAGINATION_PAGE_SIZE
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 
