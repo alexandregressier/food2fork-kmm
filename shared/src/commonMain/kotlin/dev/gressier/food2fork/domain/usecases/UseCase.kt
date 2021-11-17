@@ -19,18 +19,19 @@ object UseCase {
             flow {
                 emit(RequestState.Loading)
                 try {
+                    // For error demonstration purposes only
                     if (query == FoodCategory.Bad.name) {
                         throw Exception("Uh oh... You searched for bad recipes. Not cool!")
                     }
-                    val recipes = recipeWebService.search(query, page)
-                    recipeDao.insert(recipes)
-                    val cachedRecipes = recipeDao.run {
+                    val remoteRecipes = recipeWebService.search(query, page)
+                    recipeDao.insert(remoteRecipes)
+                    val localRecipes = recipeDao.run {
                         if (query.isBlank())
                             getAll(page)
                         else
                             search(query, page)
                     }
-                    emit(RequestState.Success(cachedRecipes))
+                    emit(RequestState.Success(localRecipes))
 
                 } catch (e: Exception) {
                     emit(RequestState.Error(e))
