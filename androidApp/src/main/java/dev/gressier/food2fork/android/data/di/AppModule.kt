@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.android.di
+package dev.gressier.food2fork.android.data.di
 
 import android.content.Context
 import dagger.Module
