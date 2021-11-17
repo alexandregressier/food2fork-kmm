@@ -4,8 +4,8 @@ import dev.gressier.food2fork.data.local.dao.RecipeDao
 import dev.gressier.food2fork.data.remote.webservice.RecipeWebService
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
+import dev.gressier.food2fork.domain.usecase.model.RequestState
 import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
-import dev.gressier.food2fork.util.RequestState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
