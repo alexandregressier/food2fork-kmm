@@ -1,5 +1,7 @@
 package dev.gressier.food2fork.data.local
 
+import dev.gressier.food2fork.data.local.model.toRecipe
+import dev.gressier.food2fork.data.local.model.toRecipeList
 import dev.gressier.food2fork.data.remote.RecipeWebServiceImpl
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
