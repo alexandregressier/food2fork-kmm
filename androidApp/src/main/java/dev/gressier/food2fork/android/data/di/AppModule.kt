@@ -15,6 +15,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApplication(@ApplicationContext context: Context): AppContext =
+    fun provideAppContext(@ApplicationContext context: Context): AppContext =
         context as AppContext
 }
