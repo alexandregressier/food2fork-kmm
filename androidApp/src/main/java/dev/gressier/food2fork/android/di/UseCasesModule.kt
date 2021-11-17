@@ -6,26 +6,25 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.gressier.food2fork.datasource.cache.RecipeCache
 import dev.gressier.food2fork.datasource.network.RecipeService
-import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
-import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
+import dev.gressier.food2fork.domain.usecases.UseCase
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object InteractorsModule {
+object UseCasesModule {
 
     @Singleton
     @Provides
     fun provideSearchRecipes(
         recipeService: RecipeService,
         recipeCache: RecipeCache,
-    ): SearchRecipes =
-        SearchRecipes(recipeService, recipeCache)
+    ): UseCase.SearchRecipes =
+        UseCase.SearchRecipes(recipeService, recipeCache)
 
     @Singleton
     @Provides
     fun provideGetRecipe(
         recipeCache: RecipeCache,
-    ): GetRecipe =
-        GetRecipe(recipeCache)
+    ): UseCase.GetRecipe =
+        UseCase.GetRecipe(recipeCache)
 }

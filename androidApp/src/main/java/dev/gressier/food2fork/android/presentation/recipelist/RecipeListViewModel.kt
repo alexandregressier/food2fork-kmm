@@ -6,8 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.gressier.food2fork.interactors.RequestState
-import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
+import dev.gressier.food2fork.domain.util.RequestState
+import dev.gressier.food2fork.domain.usecases.UseCase
 import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipelist.FoodCategory
 import dev.gressier.food2fork.presentation.recipelist.RecipeListEvent
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecipeListViewModel @Inject constructor(
-    private val searchRecipes: SearchRecipes,
+    private val searchRecipes: UseCase.SearchRecipes,
 ) : ViewModel() {
 
     var state: RecipeListState by mutableStateOf(RecipeListState())
@@ -39,7 +39,7 @@ class RecipeListViewModel @Inject constructor(
     }
 
     private fun handleRecipesLoad() {
-        searchRecipes.execute(query = state.query, page = state.page)
+        searchRecipes(query = state.query, page = state.page)
             .onEach {
                 when (it) {
                     RequestState.Loading -> {

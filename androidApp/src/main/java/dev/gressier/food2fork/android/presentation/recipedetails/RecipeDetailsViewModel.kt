@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.domain.model.RecipeId
-import dev.gressier.food2fork.interactors.RequestState
-import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
 import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsEvent
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState
+import dev.gressier.food2fork.domain.util.RequestState
+import dev.gressier.food2fork.domain.usecases.UseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipeDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val getRecipe: GetRecipe,
+    private val getRecipe: UseCase.GetRecipe,
 ) : ViewModel() {
 
     var state: RecipeDetailsState by mutableStateOf(RecipeDetailsState())
@@ -38,7 +38,7 @@ class RecipeDetailsViewModel @Inject constructor(
     }
 
     private fun handleRecipeLoad(recipeId: RecipeId) {
-        getRecipe.execute(recipeId)
+        getRecipe(recipeId)
             .onEach {
                 when (it) {
                     RequestState.Loading -> {
