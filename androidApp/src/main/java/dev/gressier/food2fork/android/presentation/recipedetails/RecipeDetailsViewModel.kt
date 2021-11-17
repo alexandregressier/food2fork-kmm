@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipedetails.GetRecipe
+import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsEvent
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState
 import kotlinx.coroutines.flow.launchIn
@@ -48,7 +49,13 @@ class RecipeDetailsViewModel @Inject constructor(
                     }
                     is RequestState.Error -> {
                         state = state.copy(isLoading = false)
-                        state.errorQueue.enqueue(it.throwable)
+                        state.messages.enqueue(
+                            VisibleMessage.Dialog(
+                                title = "Error",
+                                text = it.throwable.message ?: "Unknown error",
+                                onDismiss = {}, // TODO: implement onDismiss
+                            )
+                        )
                     }
                 }
             }.launchIn(viewModelScope)

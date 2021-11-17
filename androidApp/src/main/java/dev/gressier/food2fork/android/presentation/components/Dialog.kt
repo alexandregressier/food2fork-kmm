@@ -12,8 +12,8 @@ import dev.gressier.food2fork.android.R
 fun Dialog(
     title: String,
     text: String? = null,
-    dismissButtonText: String = stringResource(R.string.dialog_button_ok),
     onDismiss: () -> Unit = {},
+    dismissButtonText: String = stringResource(R.string.dialog_button_ok),
 ) {
     AlertDialog(
         title = { Text(title) },

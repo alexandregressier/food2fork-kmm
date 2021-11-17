@@ -5,9 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.soywiz.kds.Queue
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
+import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipelist.FoodCategory
 import dev.gressier.food2fork.presentation.recipelist.RecipeListEvent
 import dev.gressier.food2fork.presentation.recipelist.RecipeListState
@@ -30,9 +32,13 @@ class RecipeListViewModel @Inject constructor(
         when (event) {
             RecipeListEvent.RecipesLoad -> handleRecipesLoad()
             RecipeListEvent.NextPage -> handleNextPage()
-            is RecipeListEvent.QueryChange -> { handleQueryChange(event.query) }
+            is RecipeListEvent.QueryChange -> {
+                handleQueryChange(event.query)
+            }
             RecipeListEvent.QueryClear -> handleQueryClear()
-            is RecipeListEvent.FoodCategorySelect -> { handleFoodCategorySelect(event.category) }
+            is RecipeListEvent.FoodCategorySelect -> {
+                handleFoodCategorySelect(event.category)
+            }
             RecipeListEvent.Search -> handleSearch()
         }
     }
@@ -49,7 +55,19 @@ class RecipeListViewModel @Inject constructor(
                     }
                     is RequestState.Error -> {
                         state = state.copy(isLoading = false)
-                        state.errorQueue.enqueue(it.throwable)
+                        state.messages.enqueue(
+                            VisibleMessage.Dialog(
+                                title = "Error",
+                                text = it.throwable.message ?: "Unknown error",
+                                onDismiss = {
+                                    state.messages.dequeue()
+                                    state = state.copy(
+                                        messages = Queue(*state.messages.toList().toTypedArray()),
+                                        query = "", // TODO: change the way to force recomposition
+                                    )
+                                }
+                            )
+                        )
                     }
                 }
             }.launchIn(viewModelScope)
@@ -75,7 +93,7 @@ class RecipeListViewModel @Inject constructor(
     }
 
     private fun handleSearch() {
-        state = state.copy(page =  1, recipes = listOf())
+        state = state.copy(page = 1, recipes = listOf())
         handleRecipesLoad()
     }
 }

@@ -16,7 +16,9 @@ class SearchRecipes(
         flow {
             emit(RequestState.Loading)
             try {
-                if (query == FoodCategory.Bad.name) throw Exception("Uh oh... You searched for bad recipes. Not cool!")
+                if (query == FoodCategory.Bad.name) {
+                    throw Exception("Uh oh... You searched for bad recipes. Not cool!")
+                }
                 val recipes = recipeService.search(query, page)
                 recipeCache.insert(recipes)
                 val cachedRecipes = recipeCache.run {
