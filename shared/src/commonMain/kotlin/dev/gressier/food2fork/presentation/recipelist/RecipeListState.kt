@@ -1,10 +1,10 @@
 package dev.gressier.food2fork.presentation.recipelist
 
 import dev.gressier.food2fork.domain.model.Recipe
-import dev.gressier.food2fork.util.Queue
-import dev.gressier.food2fork.util.emptyQueue
 import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
+import dev.gressier.food2fork.util.Queue
+import dev.gressier.food2fork.util.emptyQueue
 
 data class RecipeListState(
     val isLoading: Boolean = false,

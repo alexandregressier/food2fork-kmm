@@ -8,11 +8,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.domain.model.RecipeId
+import dev.gressier.food2fork.domain.usecase.UseCase
+import dev.gressier.food2fork.domain.usecase.model.RequestState
 import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsEvent
 import dev.gressier.food2fork.presentation.recipedetails.RecipeDetailsState
-import dev.gressier.food2fork.domain.usecase.model.RequestState
-import dev.gressier.food2fork.domain.usecase.UseCase
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject

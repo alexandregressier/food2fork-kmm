@@ -2,8 +2,8 @@ package dev.gressier.food2fork.android.presentation.components
 
 import android.util.Log
 import androidx.compose.runtime.Composable
-import dev.gressier.food2fork.util.Queue
 import dev.gressier.food2fork.presentation.model.VisibleMessage
+import dev.gressier.food2fork.util.Queue
 
 private const val TAG = "INBOX"
 
