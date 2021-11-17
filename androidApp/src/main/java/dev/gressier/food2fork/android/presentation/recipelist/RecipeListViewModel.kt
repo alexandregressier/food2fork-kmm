@@ -25,10 +25,10 @@ class RecipeListViewModel @Inject constructor(
     var state: RecipeListState by mutableStateOf(RecipeListState())
 
     init {
-        handleEvent(RecipeListEvent.RecipesLoad)
+        emit(RecipeListEvent.RecipesLoad)
     }
 
-    fun handleEvent(event: RecipeListEvent) {
+    fun emit(event: RecipeListEvent) {
         when (event) {
             RecipeListEvent.RecipesLoad -> handleRecipesLoad()
             RecipeListEvent.NextPage -> handleNextPage()
@@ -75,7 +75,7 @@ class RecipeListViewModel @Inject constructor(
 
     private fun handleNextPage() {
         state = state.copy(page = state.page + 1)
-        handleRecipesLoad()
+        emit(RecipeListEvent.RecipesLoad)
     }
 
     private fun handleQueryChange(query: String) {
@@ -84,16 +84,16 @@ class RecipeListViewModel @Inject constructor(
 
     private fun handleQueryClear() {
         state = state.copy(query = "", selectedFoodCategory = null)
-        handleSearch()
+        emit(RecipeListEvent.Search)
     }
 
     private fun handleFoodCategorySelect(category: FoodCategory) {
         state = state.copy(query = category.name, selectedFoodCategory = category)
-        handleSearch()
+        emit(RecipeListEvent.Search)
     }
 
     private fun handleSearch() {
         state = state.copy(page = 1, recipes = listOf())
-        handleRecipesLoad()
+        emit(RecipeListEvent.RecipesLoad)
     }
 }

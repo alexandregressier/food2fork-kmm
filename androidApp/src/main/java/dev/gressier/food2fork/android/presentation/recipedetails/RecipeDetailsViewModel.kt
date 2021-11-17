@@ -27,11 +27,11 @@ class RecipeDetailsViewModel @Inject constructor(
 
     init {
         savedStateHandle.get<RecipeId>("recipeId")?.let { recipeId ->
-            handleEvent(RecipeDetailsEvent.RecipeLoad(recipeId))
+            emit(RecipeDetailsEvent.RecipeLoad(recipeId))
         }
     }
 
-    fun handleEvent(event: RecipeDetailsEvent) {
+    fun emit(event: RecipeDetailsEvent) {
         when (event) {
             is RecipeDetailsEvent.RecipeLoad -> handleRecipeLoad(event.recipeId)
         }
