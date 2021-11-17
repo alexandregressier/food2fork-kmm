@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.gressier.food2fork.data.local.RecipeCache
+import dev.gressier.food2fork.data.local.RecipeDao
 import dev.gressier.food2fork.data.remote.RecipeWebService
 import dev.gressier.food2fork.domain.usecases.UseCase
 import javax.inject.Singleton
@@ -17,14 +17,14 @@ object UseCasesModule {
     @Provides
     fun provideSearchRecipes(
         recipeWebService: RecipeWebService,
-        recipeCache: RecipeCache,
+        recipeDao: RecipeDao,
     ): UseCase.SearchRecipes =
-        UseCase.SearchRecipes(recipeWebService, recipeCache)
+        UseCase.SearchRecipes(recipeWebService, recipeDao)
 
     @Singleton
     @Provides
     fun provideGetRecipe(
-        recipeCache: RecipeCache,
+        recipeDao: RecipeDao,
     ): UseCase.GetRecipe =
-        UseCase.GetRecipe(recipeCache)
+        UseCase.GetRecipe(recipeDao)
 }

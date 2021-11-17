@@ -19,6 +19,6 @@ object CacheModule {
 
     @Singleton
     @Provides
-    fun provideRecipeCache(recipeDatabase: RecipeDatabase): RecipeCache =
-        RecipeCacheImpl(recipeDatabase)
+    fun provideRecipeDao(recipeDatabase: RecipeDatabase): RecipeDao =
+        RecipeDaoImpl(recipeDatabase)
 }

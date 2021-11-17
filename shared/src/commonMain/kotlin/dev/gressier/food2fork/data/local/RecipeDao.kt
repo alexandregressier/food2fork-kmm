@@ -5,7 +5,7 @@ import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.util.DateTimeUtil
 
-interface RecipeCache {
+interface RecipeDao {
     fun insert(recipe: Recipe)
     fun insert(recipes: List<Recipe>)
     fun getAll(page: Int): List<Recipe>
@@ -13,9 +13,9 @@ interface RecipeCache {
     fun get(recipeId: RecipeId): Recipe?
 }
 
-class RecipeCacheImpl(
+class RecipeDaoImpl(
     recipeDatabase: RecipeDatabase,
-) : RecipeCache {
+) : RecipeDao {
 
     private val recipeQueries: RecipeQueries =
         recipeDatabase.recipeQueries

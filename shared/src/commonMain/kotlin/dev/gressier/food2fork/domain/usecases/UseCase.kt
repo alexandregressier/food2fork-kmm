@@ -1,6 +1,6 @@
 package dev.gressier.food2fork.domain.usecases
 
-import dev.gressier.food2fork.data.local.RecipeCache
+import dev.gressier.food2fork.data.local.RecipeDao
 import dev.gressier.food2fork.data.remote.RecipeWebService
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
@@ -13,7 +13,7 @@ object UseCase {
 
     class SearchRecipes(
         private val recipeWebService: RecipeWebService,
-        private val recipeCache: RecipeCache,
+        private val recipeDao: RecipeDao,
     ) {
         operator fun invoke(query: String = "", page: Int): Flow<RequestState<List<Recipe>>> =
             flow {
@@ -23,8 +23,8 @@ object UseCase {
                         throw Exception("Uh oh... You searched for bad recipes. Not cool!")
                     }
                     val recipes = recipeWebService.search(query, page)
-                    recipeCache.insert(recipes)
-                    val cachedRecipes = recipeCache.run {
+                    recipeDao.insert(recipes)
+                    val cachedRecipes = recipeDao.run {
                         if (query.isBlank())
                             getAll(page)
                         else
@@ -39,14 +39,14 @@ object UseCase {
     }
 
     class GetRecipe(
-        private val recipeCache: RecipeCache,
+        private val recipeDao: RecipeDao,
     ) {
         operator fun invoke(id: RecipeId): Flow<RequestState<Recipe>> =
             flow {
                 emit(RequestState.Loading)
                 try {
                     emit(
-                        recipeCache.get(id)?.let { recipe ->
+                        recipeDao.get(id)?.let { recipe ->
                             RequestState.Success(recipe)
                         } ?: RequestState.Empty
                     )
