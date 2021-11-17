@@ -4,5 +4,5 @@ class RecipeDatabaseFactory(
     private val sqlDriverFactory: SqlDriverFactory,
 ) {
     fun create(): RecipeDatabase =
-        RecipeDatabase(sqlDriverFactory.createDriver())
+        RecipeDatabase(sqlDriverFactory.create())
 }

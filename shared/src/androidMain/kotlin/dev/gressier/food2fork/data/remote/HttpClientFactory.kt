@@ -5,9 +5,9 @@ import io.ktor.client.engine.okhttp.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 
-actual class KtorClientFactory {
+actual class HttpClientFactory {
 
-    actual fun build(): HttpClient =
+    actual fun create(): HttpClient =
         HttpClient(OkHttp) {
             install(JsonFeature) {
                 serializer = KotlinxSerializer(
