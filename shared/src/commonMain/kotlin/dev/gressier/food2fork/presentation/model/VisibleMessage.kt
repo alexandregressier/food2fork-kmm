@@ -11,7 +11,7 @@ sealed class VisibleMessage(
     ) : VisibleMessage(text)
 
     data class Log(
+        val priority: Int,
         override val text: String,
-        val priority: Int = 1,
     ) : VisibleMessage(text)
 }
