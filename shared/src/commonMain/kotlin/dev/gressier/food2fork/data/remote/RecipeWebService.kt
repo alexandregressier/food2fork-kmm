@@ -1,7 +1,7 @@
 package dev.gressier.food2fork.data.remote
 
 import dev.gressier.food2fork.data.remote.model.RecipeDto
-import dev.gressier.food2fork.data.remote.model.RecipeSearchResponse
+import dev.gressier.food2fork.data.remote.model.RecipeSearchDto
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import io.ktor.client.*
@@ -19,7 +19,7 @@ class RecipeWebServiceImpl(
 ) : RecipeWebService {
 
     override suspend fun search(query: String, page: Int): List<Recipe> =
-        httpClient.get<RecipeSearchResponse> {
+        httpClient.get<RecipeSearchDto> {
             url("$baseUrl/search?query=$query&page=$page")
             header(HttpHeaders.Authorization, TOKEN)
         }

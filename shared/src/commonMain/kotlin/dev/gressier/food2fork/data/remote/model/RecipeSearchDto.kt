@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RecipeSearchResponse(
+data class RecipeSearchDto(
     @SerialName("count") var count: Int,
     @SerialName("results") var results: List<RecipeDto>,
 )
