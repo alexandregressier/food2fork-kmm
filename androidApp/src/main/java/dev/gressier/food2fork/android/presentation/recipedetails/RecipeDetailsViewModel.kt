@@ -48,14 +48,15 @@ class RecipeDetailsViewModel @Inject constructor(
                         state = state.copy(isLoading = false, recipe = it.data)
                     }
                     is RequestState.Error -> {
-                        state = state.copy(isLoading = false)
-                        state.messages.enqueue(
+                        state = state.copy(isLoading = false, messages = state.messages.enqueue(
                             VisibleMessage.Dialog(
                                 title = "Error",
                                 text = it.throwable.message ?: "Unknown error",
-                                onDismiss = {}, // TODO: implement onDismiss
+                                onDismiss = {
+                                    state = state.copy(messages = state.messages.dequeue())
+                                },
                             )
-                        )
+                        ))
                     }
                 }
             }.launchIn(viewModelScope)

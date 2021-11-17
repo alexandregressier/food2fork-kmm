@@ -39,9 +39,6 @@ kotlin {
                 api(KotlinX.datetime)
                 implementation(KotlinX.serialization.core)
 
-                // Kotlin Data Structure
-                api("com.soywiz.korlibs.kds:kds:_")
-
                 // Ktor Client
                 implementation(Ktor.client.core)
                 implementation(Ktor.client.serialization)

@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.soywiz.kds.Queue
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.interactors.RequestState
 import dev.gressier.food2fork.interactors.recipelist.SearchRecipes
@@ -32,13 +31,9 @@ class RecipeListViewModel @Inject constructor(
         when (event) {
             RecipeListEvent.RecipesLoad -> handleRecipesLoad()
             RecipeListEvent.NextPage -> handleNextPage()
-            is RecipeListEvent.QueryChange -> {
-                handleQueryChange(event.query)
-            }
+            is RecipeListEvent.QueryChange -> handleQueryChange(event.query)
             RecipeListEvent.QueryClear -> handleQueryClear()
-            is RecipeListEvent.FoodCategorySelect -> {
-                handleFoodCategorySelect(event.category)
-            }
+            is RecipeListEvent.FoodCategorySelect -> handleFoodCategorySelect(event.category)
             RecipeListEvent.Search -> handleSearch()
         }
     }
@@ -54,20 +49,15 @@ class RecipeListViewModel @Inject constructor(
                         state = state.copy(isLoading = false, recipes = state.recipes + it.data)
                     }
                     is RequestState.Error -> {
-                        state = state.copy(isLoading = false)
-                        state.messages.enqueue(
+                        state = state.copy(isLoading = false, messages = state.messages.enqueue(
                             VisibleMessage.Dialog(
                                 title = "Error",
                                 text = it.throwable.message ?: "Unknown error",
                                 onDismiss = {
-                                    state.messages.dequeue()
-                                    state = state.copy(
-                                        messages = Queue(*state.messages.toList().toTypedArray()),
-                                        query = "", // TODO: change the way to force recomposition
-                                    )
-                                }
+                                    state = state.copy(messages = state.messages.dequeue())
+                                },
                             )
-                        )
+                        ))
                     }
                 }
             }.launchIn(viewModelScope)
