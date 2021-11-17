@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.domain.usecases
+package dev.gressier.food2fork.domain.usecase
 
 import dev.gressier.food2fork.data.local.dao.RecipeDao
 import dev.gressier.food2fork.data.remote.webservice.RecipeWebService

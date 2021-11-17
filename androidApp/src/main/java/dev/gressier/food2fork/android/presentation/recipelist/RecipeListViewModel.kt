@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.gressier.food2fork.util.RequestState
-import dev.gressier.food2fork.domain.usecases.UseCase
+import dev.gressier.food2fork.domain.usecase.UseCase
 import dev.gressier.food2fork.presentation.model.VisibleMessage
 import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory
 import dev.gressier.food2fork.presentation.recipelist.RecipeListEvent
