@@ -1,14 +1,8 @@
 package dev.gressier.food2fork.data.local
 
-import com.squareup.sqldelight.db.SqlDriver
-
-expect class DriverFactory {
-    fun createDriver(): SqlDriver
-}
-
 class RecipeDatabaseFactory(
-    private val driverFactory: DriverFactory,
+    private val sqlDriverFactory: SqlDriverFactory,
 ) {
     fun create(): RecipeDatabase =
-        RecipeDatabase(driverFactory.createDriver())
+        RecipeDatabase(sqlDriverFactory.createDriver())
 }
