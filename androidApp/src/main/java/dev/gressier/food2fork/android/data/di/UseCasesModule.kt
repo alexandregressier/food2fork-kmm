@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.gressier.food2fork.data.local.RecipeDao
-import dev.gressier.food2fork.data.remote.RecipeWebService
+import dev.gressier.food2fork.data.local.dao.RecipeDao
+import dev.gressier.food2fork.data.remote.webservice.RecipeWebService
 import dev.gressier.food2fork.domain.usecases.UseCase
 import javax.inject.Singleton
 

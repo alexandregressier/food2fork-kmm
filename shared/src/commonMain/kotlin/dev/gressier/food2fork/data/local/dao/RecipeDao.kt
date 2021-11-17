@@ -1,8 +1,10 @@
-package dev.gressier.food2fork.data.local
+package dev.gressier.food2fork.data.local.dao
 
+import dev.gressier.food2fork.data.local.RecipeDatabase
+import dev.gressier.food2fork.data.local.RecipeQueries
 import dev.gressier.food2fork.data.local.model.toRecipe
 import dev.gressier.food2fork.data.local.model.toRecipeList
-import dev.gressier.food2fork.data.remote.RecipeWebServiceImpl
+import dev.gressier.food2fork.data.remote.webservice.RecipeWebServiceImpl
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.util.DateTimeUtil

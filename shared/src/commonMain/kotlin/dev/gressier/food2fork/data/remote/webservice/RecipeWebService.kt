@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.data.remote
+package dev.gressier.food2fork.data.remote.webservice
 
 import dev.gressier.food2fork.data.remote.model.RecipeDto
 import dev.gressier.food2fork.data.remote.model.RecipeSearchDto

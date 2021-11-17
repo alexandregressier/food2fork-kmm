@@ -1,7 +1,7 @@
 package dev.gressier.food2fork.domain.usecases
 
-import dev.gressier.food2fork.data.local.RecipeDao
-import dev.gressier.food2fork.data.remote.RecipeWebService
+import dev.gressier.food2fork.data.local.dao.RecipeDao
+import dev.gressier.food2fork.data.remote.webservice.RecipeWebService
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
 import dev.gressier.food2fork.presentation.recipelist.model.FoodCategory

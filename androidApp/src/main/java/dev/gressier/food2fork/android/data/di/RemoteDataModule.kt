@@ -5,8 +5,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.gressier.food2fork.data.remote.KtorClientFactory
-import dev.gressier.food2fork.data.remote.RecipeWebService
-import dev.gressier.food2fork.data.remote.RecipeWebServiceImpl
+import dev.gressier.food2fork.data.remote.webservice.RecipeWebService
+import dev.gressier.food2fork.data.remote.webservice.RecipeWebServiceImpl
 import io.ktor.client.*
 import javax.inject.Singleton
 

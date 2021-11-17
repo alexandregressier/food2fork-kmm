@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.gressier.food2fork.android.AppContext
 import dev.gressier.food2fork.data.local.*
+import dev.gressier.food2fork.data.local.dao.RecipeDao
+import dev.gressier.food2fork.data.local.dao.RecipeDaoImpl
 import javax.inject.Singleton
 
 @Module
