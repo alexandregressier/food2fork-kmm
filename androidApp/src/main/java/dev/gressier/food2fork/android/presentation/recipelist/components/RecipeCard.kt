@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dev.gressier.food2fork.android.R
 import dev.gressier.food2fork.android.presentation.components.RecipeImage
 import dev.gressier.food2fork.domain.model.Recipe
-import dev.gressier.food2fork.domain.util.Example
+import dev.gressier.food2fork.util.Example
 
 @Composable
 fun RecipeCard(

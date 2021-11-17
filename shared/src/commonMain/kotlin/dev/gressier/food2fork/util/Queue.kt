@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.domain.util
+package dev.gressier.food2fork.util
 
 open class Queue<out T>(val ts: List<T> = emptyList()) {
 

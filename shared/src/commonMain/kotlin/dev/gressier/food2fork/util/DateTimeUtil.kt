@@ -1,4 +1,4 @@
-package dev.gressier.food2fork.domain.util
+package dev.gressier.food2fork.util
 
 import kotlinx.datetime.*
 

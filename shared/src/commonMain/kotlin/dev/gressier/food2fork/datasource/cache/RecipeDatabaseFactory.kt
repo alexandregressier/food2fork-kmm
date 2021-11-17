@@ -2,7 +2,7 @@ package dev.gressier.food2fork.datasource.cache
 
 import com.squareup.sqldelight.db.SqlDriver
 import dev.gressier.food2fork.domain.model.Recipe
-import dev.gressier.food2fork.domain.util.DateTimeUtil
+import dev.gressier.food2fork.util.DateTimeUtil
 import io.ktor.http.*
 
 expect class DriverFactory {

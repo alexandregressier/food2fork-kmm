@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.gressier.food2fork.android.presentation.components.RecipeImage
 import dev.gressier.food2fork.domain.model.Recipe
-import dev.gressier.food2fork.domain.util.DateTimeUtil
+import dev.gressier.food2fork.util.DateTimeUtil
 
 @Composable
 fun RecipeView(

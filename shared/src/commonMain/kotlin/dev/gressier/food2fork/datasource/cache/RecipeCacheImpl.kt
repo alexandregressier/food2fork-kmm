@@ -3,7 +3,7 @@ package dev.gressier.food2fork.datasource.cache
 import dev.gressier.food2fork.datasource.network.RecipeServiceImpl.Companion.RECIPE_PAGINATION_PAGE_SIZE
 import dev.gressier.food2fork.domain.model.Recipe
 import dev.gressier.food2fork.domain.model.RecipeId
-import dev.gressier.food2fork.domain.util.DateTimeUtil
+import dev.gressier.food2fork.util.DateTimeUtil
 
 class RecipeCacheImpl(
     recipeDatabase: RecipeDatabase,
