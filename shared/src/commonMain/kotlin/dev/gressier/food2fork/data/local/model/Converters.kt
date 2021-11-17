@@ -7,15 +7,15 @@ import io.ktor.http.*
 
 fun RecipeEntity.toRecipe(): Recipe =
     Recipe(
-        id.toInt(),
+        id = id.toInt(),
         title,
         publisher,
-        Url(featuredImageUrl),
-        rating.toInt(),
-        Url(sourceUrl),
-        ingredients.split(", "),
-        DateTimeUtil.toLocalDateTime(addedAt),
-        DateTimeUtil.toLocalDateTime(updatedAt),
+        featuredImageUrl = Url(featuredImageUrl),
+        rating = rating.toInt(),
+        sourceUrl = Url(sourceUrl),
+        ingredients = ingredients.split(", "),
+        addedAt = DateTimeUtil.toLocalDateTime(addedAt),
+        updatedAt = DateTimeUtil.toLocalDateTime(updatedAt),
     )
 
 fun List<RecipeEntity>.toRecipeList(): List<Recipe> =

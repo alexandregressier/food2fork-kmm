@@ -11,7 +11,7 @@ fun RecipeDto.toRecipe(): Recipe =
         publisher,
         featuredImageUrl = Url(featuredImage),
         rating,
-        Url(sourceUrl),
+        sourceUrl = Url(sourceUrl),
         ingredients,
         addedAt = DateTimeUtil.toLocalDateTime(longDateAdded.toDouble()),
         updatedAt = DateTimeUtil.toLocalDateTime(longDateUpdated.toDouble()),
