@@ -7,10 +7,19 @@ import dev.gressier.food2fork.util.Queue
 import dev.gressier.food2fork.util.emptyQueue
 
 data class RecipeListState(
-    val isLoading: Boolean = false,
-    val query: String = "",
-    val selectedFoodCategory: FoodCategory? = null,
-    val page: Int = 1,
-    val recipes: List<Recipe> = emptyList(),
-    val messages: Queue<VisibleMessage> = emptyQueue(),
-)
+    val isLoading: Boolean,
+    val query: String,
+    val selectedFoodCategory: FoodCategory?,
+    val page: Int,
+    val recipes: List<Recipe>,
+    val messages: Queue<VisibleMessage>,
+) {
+    constructor() : this(
+        isLoading = false,
+        query = "",
+        selectedFoodCategory = null,
+        page = 1,
+        recipes = emptyList(),
+        messages = emptyQueue()
+    )
+}
